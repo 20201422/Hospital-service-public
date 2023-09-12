@@ -1,0 +1,33 @@
+spring:
+  datasource:
+    #Spring Boot 默认是不注入这些属性值的，需要自己绑定
+    #druid数据源专有配置
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+
+    #配置监控统计拦截的filters   stat：监控统计   log4j：日志记录   wall：防御sql注入
+    #如果允许报错 java.Lang.classNotFoundException: org.apache.Log4j.Priority
+    #则导入 Log4j依赖即可，Maven uhl: https://mvnrepository.com/artifact/log4j/log4j
+    filters: stat,wall,log4j
+    maxPoolPreparedStatementPerConnectionSize: 20
+    useGlobalDatasourceStat: true
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+
+
+#支付包接配置
+alipay:
+  appId: 9021000122692780
+  appPrivateKey: MIIEwAIBADAASCBKowggSmAgEAAoIBAQDUbY1Svus4oUDDFLG5OGW8693sIfBntevUK62jVzYvYmk68QURth3z0AAyXm5x5ZGYn4MQ+Ya5e99wilm0x8FuUkzldVNPPSGG1LmYP5R+LPktuOwuB+soxP2qNNgkd80Qd9K4MtZUhfCA15IhFU/z66Uq7n/DLb2m8I8kVU0ueju2HmH3CsrxiQX5nRj0HxMvVdEm9ktYy1Tt4X5vCOPEcX39ty/BJVpHCqtrw4SQIxSfFReVHLGtdPqTUyLclV7+RFXRnhUWGlUAIrZkrr4kRWYVvaCnbZnohfnvt3N3KX+UKXNRupNt3NLMmtIh8jyUqjvvaTYfVmZ2VEc9AyYhAgMBAAECggEBAJRCUZwqu6iugrCkxNVs0zTjueOQXGVFxu4x/eI+gAbaPG9ywAL4hDciOMDuv06m1tMaoTM7tBfIqM23AZz2vb3tmtWa6SYomDmuRkpINa9KXC7ZHZ2S0UGHGzOr5h6trmWL+3mroYMkaBLEYazNXxvynzgzdOAYEIFu67iEAHYqe/XB39lTdRAwRWsZkOtHxQDF7DMe4PwwHFeCeeptUvwSw0cliNxIVctj+DaiQ7YKoJI7LofAR2QDwESzY/a7Iu+bqlOfmatPATIx1ktnDTc4w92EsbyAbaZpkPpwDfldeqK+gcI+UFH13OvT2cJRG2USl8VdzReytEwt0CfymQECgYEA6fvjXVdW8/xLgSVR0YqeYC71ey4CxzuNelrDodQq81A803XyTwJdc+oZMyGb5JxaZY+5ojUfulRXfbwz+muQ3hlaysZ12HjLOj7k2ys05gzio0l7OXwbVBa9q5Wo56JRkmFIg7alupOdMSGq46IQq06ijhA69uvnLFzfAM9V54kCgYEA6GpuekvpCopgs++XCa9v6DaayK4A275nBXLc7ibQnGGjBG1v2bpRrsbTZ+M0IFHo7fEAVmWRvD5jsWdGsL8cIqC6YmoXZOr9UguHSMgTgf/BiCzEs67Eo1DV2pYjixWuMkj3+EP4vI2mJlN3HsynZTmu9AMDm4SoOa4qdFuHC9kCgYEA0QgKkvTX5ZhbC8D/WydvXZYWEDmGmd6GAezcINKenEfuTytrkVIXktpsMNWxo4Za66h+un6jHZ8DmnxsIye9f+0+wzCRTxZ62EofwfzTgUG5pw6aWzyYXYMDZyqIfobwQMlQMvsVC52cLKxbMokyQxg4+JlfVABjwaomP17666ECgYEAyvE0quFiCmwuaLBLCJACfZhAq/8UjMzDlIRp2iJWglbXS+RriIkjDiRbMRm5yIb9h9erXcWu7drknmH53hfib3I9jfXpm5t9u4iJhsn+DsPOsCO3VtbCqYDKW+ZB/w7dXtdMf6KKrcpaTJkRKPm3KbKmzDddjQzXABbOx2+sinECgYEAoJqJqqHwFhQaQhqHcrmIUPF1VGZ7T0p4T4MIgOd7IKpOWdFGlI43cTdUYPmgB15NQV1a0Ksx2Nma+7gOUUL5JGl/9UalbqpRgcF8sPaAuiZaBHOZ1mpOiUYAqLnDRo1VDIsAdJF5oOcTT6sZTpbi6MUYZKBdVQ6Hcoh/1flHQeY=
+  alipayPublicKey: MIIBIjANBEFAAOCAQ8AMIIBCgKCAQEAtHfWCAfSwM5fcOqQXLd5SJLGDgbqBb15/+eM73O2I+bIx6Vj1BaVvNyGFBLkZrjYAfN+k7uJQMHTsRv2BPVMrZMIgaSNGhV69A87mzphwYjTCAQijgX0V9uuUpvbiw2r5csB3wza+iI3IzRNxxdV2qOK92aXJJi4+RzthzCLAWaKcVpznUnZ9Yyug4SvdmbHCTzbOTU/EoPET1fOKtvQSNTZQKKe3ESVStqGKIA0wLKPiak2qZXBeMqlAWujiqdxBnitof/FacUq8V4yeKZa+WsqnzdxsmkMas1aW38CxvdB1qyzQtVuD1IjGg0mJ5ByPLcR/L0/rPp4aewE8EQbSQIDAQAB
+  notifyUrl: https://kunpeng24.cn:9091/alipay/notify
+
+

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>邮件</title>
+</head>
+<body>
+<h2>三联协和医院预约挂号通知</h2>
+<div>
+    <h3>挂号信息</h3>
+    <h4>姓名：<span th:text="${patientName}"></span></h4>
+    <h4>性别：<span th:text="${patientSex}"></span></h4>
+    <h4>科室：<span th:text="${departmentName}"></span></h4>
+    <h4>门诊类型：<span th:text="${consultingRoomType}"></span></h4>
+    <h4>医生：<span th:text="${doctorName}"></span></h4>
+    <h4>就诊时间：
+        <span th:text="${numberSourceDate}"></span>&nbsp;
+        <span th:text="${aMOrPm}"></span>&nbsp;
+        <span th:text="${consultationPeriod}"></span></h4>
+    <hr>
+    <h5 th:text="${message}"></h5>
+</div>
+<footer>
+    <hr>
+    <div class="footer-help">
+        需要更多帮助？致电 400-820-882X。
+    </div>
+    <div class="footer">
+        <p>三联协和医院预约挂号系统采用符合业界标准的加密技术对您提交的信息进行保密。</p>
+        <hr style="background-color: #F2F2F2; margin-right: 8px;">
+        地址： 江西省南昌市红谷滩新区丰和南大道696号 南昌航空大学
+        <div style="margin-top: 8px; color : #F2F2F2;">
+            Copyright ©️ 2023 202014-2 lnc.保留所有权利&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+            <a href="https://beian.miit.gov.cn/" target="_blank">蒙ICP备2023001109号</a>
+        </div>
+    </div>
+</footer>
+</body>
+<style>
+    footer {
+        margin-top: 42px;
+        width: 100%;
+    }
+    h2 {
+        background-color: #175850;
+        color: #F2F2F2;
+        font-family: SimSun, STSong, serif;
+        padding-top: 8px;
+        padding-bottom: 8px;
+    }
+    .footer-help{
+        background-color: white;
+        padding: 10px 0 10px 8px;
+        font-size: 20px;
+        color: #7c7c7c;
+    }
+    .footer{
+        overflow: hidden;
+        bottom: 0;
+        margin: 0 0 0 0;
+        padding: 10px 0 20px 8px;
+        background-color: #175850;
+        /*background-image: url("@/assets/background.jpg");*/
+        /* background-image: url("@/assets/人民大会堂.png"); */
+        color: #F2F2F2;
+        text-align: left;
+        font-size: 12px;
+    }
+    .footer p{
+        color: #F2F2F2;
+        padding-right: 8px;
+    }
+    a {
+        color: #F2F2F2;
+    }
+    a:hover {
+        color : #F2F2F2;
+    }
+</style>
+</html>
